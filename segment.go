@@ -408,7 +408,7 @@ func (s *segment) getIntersection(other *segment) *point {
 
 func (s *segment) split(point *point) []*sweepEvent {
 
-	newEvents := []*sweepEvent{}
+	newEvents := make([]*sweepEvent, 2)
 	alreadyLinked := point.events != nil
 
 	newLeftSE := newSweepEvent(point, true)
@@ -416,8 +416,8 @@ func (s *segment) split(point *point) []*sweepEvent {
 	oldRightSE := s.rightSE
 
 	s.replaceRightSE(newRightSE)
-	newEvents = append(newEvents, newRightSE)
-	newEvents = append(newEvents, newLeftSE)
+	newEvents[0] = newRightSE
+	newEvents[1] = newLeftSE
 
 	newRings := make([]*ringIn, len(s.rings))
 	copy(newRings, s.rings)
