@@ -118,7 +118,7 @@ func decodePolygonSet(data any) ([][][][]float64, error) {
 type Feature struct {
 	Type       string         `json:"type"`
 	Geometry   *Geometry      `json:"geometry"`
-	Properties map[string]any `json:'properties'`
+	Properties map[string]any `json:"properties"`
 }
 
 type FeatureCollection struct {
