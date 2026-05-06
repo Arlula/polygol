@@ -631,14 +631,14 @@ func (s *segment) isInResult() bool {
 	mpsAfter := s.afterState().multiPolys
 
 	switch s.op.opType {
-	case "union":
+	case opUnion:
 		// UNION - included iff:
 		//  * On one side of us there is 0 poly interiors AND
 		//  * On the other side there is 1 or more.
 		noBefores := len(mpsBefore) == 0
 		noAfters := len(mpsAfter) == 0
 		s.inResult = noBefores != noAfters
-	case "intersection":
+	case opIntersection:
 		// INTERSECTION - included iff:
 		//  * on one side of us all multipolys are rep. with poly interiors AND
 		//  * on the other side of us, not all multipolys are repsented
@@ -652,13 +652,13 @@ func (s *segment) isInResult() bool {
 			most = len(mpsBefore)
 		}
 		s.inResult = most == s.op.numMultiPolys && least < most
-	case "xor":
+	case opXor:
 		// XOR - included iff:
 		//  * the difference between the number of multipolys represented
 		//    with poly interiors on our two sides is an odd number
 		diff := abs(len(mpsBefore) - len(mpsAfter))
 		s.inResult = diff%2 == 1
-	case "difference":
+	case opDifference:
 		// DIFFERENCE included iff:
 		//  * on exactly one side, we have just the subject
 		isJustSubject := func(mps []*multiPolyIn) bool {

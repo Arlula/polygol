@@ -86,23 +86,23 @@ func TestEndToEnd(t *testing.T) {
 			} else {
 				testCases = []testCase{
 					{
-						Name:          fmt.Sprintf("%s-union", target.Name()),
-						OperationType: "union",
+						Name:          target.Name() + "-union",
+						OperationType: opUnion,
 						ResultPath:    fp,
 					},
 					{
-						Name:          fmt.Sprintf("%s-intersection", target.Name()),
-						OperationType: "intersection",
+						Name:          target.Name() + "-intersection",
+						OperationType: opIntersection,
 						ResultPath:    fp,
 					},
 					{
-						Name:          fmt.Sprintf("%s-xor", target.Name()),
-						OperationType: "xor",
+						Name:          target.Name() + "-xor",
+						OperationType: opXor,
 						ResultPath:    fp,
 					},
 					{
-						Name:          fmt.Sprintf("%s-difference", target.Name()),
-						OperationType: "difference",
+						Name:          target.Name() + "-difference",
+						OperationType: opDifference,
 						ResultPath:    fp,
 					},
 				}

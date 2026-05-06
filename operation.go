@@ -43,6 +43,14 @@ type operation struct {
 	segmentID     int
 }
 
+const (
+	// optypes
+	opDifference   = "difference"
+	opIntersection = "intersection"
+	opUnion        = "union"
+	opXor          = "xor"
+)
+
 func newOperation(opType string) *operation {
 	rounder := newPtRounder()
 	return &operation{
@@ -66,7 +74,7 @@ func (o *operation) run(geom Geom, moreGeoms ...Geom) (Geom, error) {
 	// If the bbox of a multipolygon that's part of the clipping doesn't
 	// intersect the bbox of the subject at all, we can just drop that
 	// multipolygon.
-	case "difference":
+	case opDifference:
 		// in place removal
 		subject := multiPolys[0]
 		i := 1
@@ -80,7 +88,7 @@ func (o *operation) run(geom Geom, moreGeoms ...Geom) (Geom, error) {
 	// BBox optimization for intersection operation
 	// If we can find any pair of multipolygons whose bbox does not overlap,
 	// then the result will be empty.
-	case "intersection":
+	case opIntersection:
 		// TODO: this is O(n^2) in number of polygons. By sorting the bboxes,
 		//       it could be optimized to O(n * ln(n))
 		for i := 0; i < len(multiPolys); i++ {

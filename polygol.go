@@ -9,19 +9,19 @@ func New() *Polygol {
 }
 
 func (p *Polygol) Union(geom Geom, moreGeoms ...Geom) (Geom, error) {
-	return newOperation("union").run(geom, moreGeoms...)
+	return newOperation(opUnion).run(geom, moreGeoms...)
 }
 
 func (p *Polygol) Intersection(geom Geom, moreGeoms ...Geom) (Geom, error) {
-	return newOperation("intersection").run(geom, moreGeoms...)
+	return newOperation(opIntersection).run(geom, moreGeoms...)
 }
 
 func (p *Polygol) Difference(geom Geom, moreGeoms ...Geom) (Geom, error) {
-	return newOperation("difference").run(geom, moreGeoms...)
+	return newOperation(opDifference).run(geom, moreGeoms...)
 }
 
 func (p *Polygol) XOR(geom Geom, moreGeoms ...Geom) (Geom, error) {
-	return newOperation("xor").run(geom, moreGeoms...)
+	return newOperation(opXor).run(geom, moreGeoms...)
 }
 
 func Union(geom Geom, moreGeoms ...Geom) (Geom, error) {
