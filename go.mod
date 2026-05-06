@@ -1,4 +1,4 @@
-module github.com/Arlula/polygol
+module github.com/arlula/polygol
 
 go 1.18
 
