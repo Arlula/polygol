@@ -57,7 +57,7 @@ func loadGeoms(filepath string) ([]Geom, error) {
 		case "MultiPolygon":
 			geoms[i] = fg.MultiPolygon
 		default:
-			return nil, fmt.Errorf("only polygon or multipolygon geometry types supported")
+			return nil, errors.New("only polygon or multipolygon geometry types supported")
 		}
 	}
 

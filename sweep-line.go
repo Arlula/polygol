@@ -62,8 +62,7 @@ func (sl *sweepLine) process(event *sweepEvent) ([]*sweepEvent, error) {
 
 	if node == nil {
 		return nil, fmt.Errorf(
-			`unable to find segment #%d %v -> %v in SweepLine tree. 
-			please submit a bug report.`,
+			`unable to find segment #%d %v -> %v in SweepLine tree`,
 			seg.id, seg.leftSE.point, seg.rightSE.point,
 		)
 	}

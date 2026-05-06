@@ -224,7 +224,7 @@ func (o *operation) newSegmentFromRing(pt1, pt2 *point, ring *ringIn) (*segment,
 		rightPt = pt1
 		winding = -1
 	} else {
-		return nil, fmt.Errorf("tried to create degenerate segment at [%f,%f].", pt1.x.number(), pt1.y.number())
+		return nil, fmt.Errorf("tried to create degenerate segment at [%f,%f]", pt1.x.number(), pt1.y.number())
 	}
 
 	leftSE := newSweepEvent(leftPt, true)

@@ -2,7 +2,6 @@ package polygol
 
 import (
 	"errors"
-	"fmt"
 )
 
 type ringIn struct {
@@ -15,10 +14,10 @@ type ringIn struct {
 func (o *operation) newRingIn(ring [][]float64, poly *polyIn, isExterior bool) (*ringIn, error) {
 
 	if len(ring) == 0 {
-		return nil, fmt.Errorf(`input geometry is not a valid polygon or multipolygon (empty)`)
+		return nil, errors.New(`input geometry is not a valid polygon or multipolygon (empty)`)
 	}
 	if len(ring[0]) < 2 {
-		return nil, fmt.Errorf(`input geometry is not a valid polygon or multipolygon (empty)`)
+		return nil, errors.New(`input geometry is not a valid polygon or multipolygon (empty)`)
 	}
 
 	ri := &ringIn{}
@@ -35,7 +34,7 @@ func (o *operation) newRingIn(ring [][]float64, poly *polyIn, isExterior bool) (
 	for i := 1; i < len(ring); i++ {
 
 		if len(ring[i]) < 2 {
-			return nil, fmt.Errorf(`input geometry is not a valid polygon or multipolygon (missing coordinates)`)
+			return nil, errors.New(`input geometry is not a valid polygon or multipolygon (missing coordinates)`)
 		}
 
 		point := o.rounder.roundFloat(ring[i][0], ring[i][1])
