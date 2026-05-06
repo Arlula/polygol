@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/engelsjk/polygol/geojson"
+	"github.com/arlula/polygol/geojson"
 )
 
 func expect(t testing.TB, what bool) {
