@@ -25,7 +25,7 @@ type sweepLine struct {
 
 func newSweepLine(
 	queue *splaytree.SplayTree,
-	comparator func(a, b interface{}) int,
+	comparator func(a, b any) int,
 ) *sweepLine {
 	sl := &sweepLine{}
 	if comparator == nil {

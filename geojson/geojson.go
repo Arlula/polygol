@@ -16,7 +16,7 @@ type Geometry struct {
 }
 
 func (g *Geometry) UnmarshalJSON(data []byte) error {
-	var object map[string]interface{}
+	var object map[string]any
 	err := json.Unmarshal(data, &object)
 	if err != nil {
 		return err
@@ -42,8 +42,8 @@ func (g *Geometry) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-func decodePosition(data interface{}) ([]float64, error) {
-	coords, ok := data.([]interface{})
+func decodePosition(data any) ([]float64, error) {
+	coords, ok := data.([]any)
 	if !ok {
 		return nil, fmt.Errorf("not a valid position, got %v", data)
 	}
@@ -60,8 +60,8 @@ func decodePosition(data interface{}) ([]float64, error) {
 	return result, nil
 }
 
-func decodePositionSet(data interface{}) ([][]float64, error) {
-	points, ok := data.([]interface{})
+func decodePositionSet(data any) ([][]float64, error) {
+	points, ok := data.([]any)
 	if !ok {
 		return nil, fmt.Errorf("not a valid set of positions, got %v", data)
 	}
@@ -78,8 +78,8 @@ func decodePositionSet(data interface{}) ([][]float64, error) {
 	return result, nil
 }
 
-func decodePathSet(data interface{}) ([][][]float64, error) {
-	sets, ok := data.([]interface{})
+func decodePathSet(data any) ([][][]float64, error) {
+	sets, ok := data.([]any)
 	if !ok {
 		return nil, fmt.Errorf("not a valid path, got %v", data)
 	}
@@ -97,8 +97,8 @@ func decodePathSet(data interface{}) ([][][]float64, error) {
 	return result, nil
 }
 
-func decodePolygonSet(data interface{}) ([][][][]float64, error) {
-	polygons, ok := data.([]interface{})
+func decodePolygonSet(data any) ([][][][]float64, error) {
+	polygons, ok := data.([]any)
 	if !ok {
 		return nil, fmt.Errorf("not a valid polygon, got %v", data)
 	}

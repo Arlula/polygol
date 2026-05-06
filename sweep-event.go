@@ -31,7 +31,7 @@ func newSweepEvent(point *point, isLeft bool) *sweepEvent {
 }
 
 // Compare orders sweep events in the sweep event queue
-func sweepEventCompare(a, b interface{}) int {
+func sweepEventCompare(a, b any) int {
 
 	aSE := a.(*sweepEvent)
 	bSE := b.(*sweepEvent)

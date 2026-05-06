@@ -2,7 +2,7 @@ package polygol
 
 import "testing"
 
-var comparator = func(a, b interface{}) int {
+var comparator = func(a, b any) int {
 	af := a.(float64)
 	bf := b.(float64)
 	if af == bf {

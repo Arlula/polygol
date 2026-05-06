@@ -45,7 +45,7 @@ func (o *operation) newSegment(leftSE, rightSE *sweepEvent, rings []*ringIn, win
 	return s
 }
 
-func segmentCompare(a, b interface{}) int {
+func segmentCompare(a, b any) int {
 
 	aSeg := a.(*segment)
 	bSeg := b.(*segment)

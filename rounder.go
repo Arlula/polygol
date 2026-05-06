@@ -35,7 +35,7 @@ type coordRounder struct {
 }
 
 func newCoordRounder() *coordRounder {
-	less := func(a, b interface{}) int {
+	less := func(a, b any) int {
 		af := a.(BigNumber)
 		bf := b.(BigNumber)
 		return compare(af, bf)
