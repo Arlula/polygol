@@ -1,6 +1,7 @@
 package polygol
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -106,7 +107,7 @@ type polyIn struct {
 func (o *operation) newPolyIn(poly [][][]float64, multiPoly *multiPolyIn) (*polyIn, error) {
 
 	if len(poly) == 0 {
-		return nil, fmt.Errorf(`tnput geometry is not a valid polygon or multipolygon (empty)`)
+		return nil, errors.New(`input geometry is not a valid polygon or multipolygon (empty)`)
 	}
 
 	pi := &polyIn{}
