@@ -2,8 +2,8 @@ package polygol
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"path"
 	"path/filepath"
 	"strings"
@@ -31,7 +31,7 @@ type testCase struct {
 }
 
 func TestEndToEnd(t *testing.T) {
-	targets, err := ioutil.ReadDir(endToEndDir)
+	targets, err := os.ReadDir(endToEndDir)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +59,7 @@ func TestEndToEnd(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		files, err := ioutil.ReadDir(targetDir)
+		files, err := os.ReadDir(targetDir)
 		if err != nil {
 			log.Fatal(err)
 		}

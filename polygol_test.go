@@ -1,8 +1,8 @@
 package polygol
 
 import (
-	"fmt"
-	"io/ioutil"
+	"errors"
+	"io"
 	"os"
 	"testing"
 
@@ -33,7 +33,7 @@ func loadGeoms(filepath string) ([]Geom, error) {
 	}
 	defer f.Close()
 
-	b, err := ioutil.ReadAll(f)
+	b, err := io.ReadAll(f)
 	if err != nil {
 		return nil, err
 	}
